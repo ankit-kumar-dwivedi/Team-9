@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import { Nav, MenuItem, Navbar,Image, NavItem, NavDropdown, Carousel,Grid,Row,Col,Thumbnail} from 'react-bootstrap';
-import './App.css';
+import './Welcome.css';
 
 function Header(){
   return <div className="row header">
@@ -109,7 +109,7 @@ function Clinics(){
       </Row>
     </Grid>;
 }
-class App extends Component {
+class Welcome extends Component {
   render() {
     return <div>
         <Header />
@@ -123,4 +123,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Welcome;
