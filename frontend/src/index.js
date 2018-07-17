@@ -4,12 +4,9 @@ import { BrowserRouter, Route, withRouter } from 'react-router-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import Welcome from './Welcome';
+import Multistep from './Multistep';
 
-function Multistep(){
-    return <div>
-    <h1>Here comes the multistep form</h1>
-    </div>
-}
+
 
 function App(){
     return <Welcome /> ;

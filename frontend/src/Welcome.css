@@ -1,6 +1,45 @@
 .App {
   text-align: center;
 }
+h1, h2 {
+    margin: 30px 0 40px;
+    text-align: center;
+    position: relative;
+}
+.row-fluid {
+    width: 100%;
+}
+
+div {
+    display: block;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+}
+.content-img {
+    width: 70px;
+    float: left;
+}
+h1:after, h2:after {
+    margin: 15px auto 0;
+    width: 40px;
+    height: 3px;
+    background: #4EBC8B;
+    content: "";
+    display: block;
+}
+
+.span4 {
+    width: 300px;
+}
+[class*="span"] {
+    float: left;
+    min-height: 1px;
+    margin-left: 5%;
+}
 
 .header {
   background-color: whitesmoke;
@@ -11,9 +50,6 @@
   content:"";
   clear: both;
   display: table;
-}
-.intendation{
-  text-align: center;
 }
 
 .column{
@@ -28,6 +64,7 @@
   color: black;
   text-emphasis: emphasis 10px;;
   background-color: rgb(8, 179, 236);
+  margin-bottom: 0px;
 }
 .logo{
   margin-left: 20px;
@@ -48,4 +85,13 @@
    
   padding-left: 10px;
   padding-bottom: 20px;
+}
+.clinic{
+  width: 250px;
+  height: 250px;
+  border-color: aliceblue;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 50%;
+  
 }
