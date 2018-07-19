@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Nav, MenuItem, Navbar,Image, NavItem, NavDropdown, Carousel,Grid,Row,Col,Button} from 'react-bootstrap';
+import { Nav, MenuItem, Navbar,Image,Thumbnail, NavItem, NavDropdown, Carousel,Grid,Row,Col,Button} from 'react-bootstrap';
 import './Welcome.css';
 
+const special = [
+  {
+    name: "The Doctor1",
+    imageURL: "images/doc.png",
+    description: "This is example of a special doctor 1description"
+  },
+  {
+    name: "The Doctor2",
+    imageURL: "images/doc.png",
+    description: "This is example of a special doctor 2description"
+  },
+  {
+    name: "The Doctor3",
+    imageURL: "images/doc.png",
+    description: "This is example of a special doctor 3description"
+  },
+  {
+    name: "The Doctor4",
+    imageURL: "images/doc.png",
+    description: "This is example of a special doctor 4description"
+  }
+];
 function Header(){
   return <div className="row header">
       <div className="column">
@@ -171,8 +193,25 @@ function Clinics(){
       </Row>
     </Grid>;
 }
+
+function Team(special){
+  return <div className="container">
+      {special.map((i,index) =>
+         <Col key={index} xs={6} md={4}>
+          <Thumbnail src={i.imageURL} alt="242x200">
+            <h3>{i.name}</h3>
+            <p>{i.description}</p>
+            <p>
+              <Button bsStyle="primary">Button</Button>
+            </p>
+          </Thumbnail>
+        </Col>)}
+    </div>;
+}
+
 class Welcome extends Component {
   render() {
+ debugger
     return <div>
         <Header />
         <Navi />
@@ -182,6 +221,7 @@ class Welcome extends Component {
           <h2>Clinical Specialities</h2>
         </div>
         <Clinics />
+        <Team special={special}/>
       </div>;
   }
 }
