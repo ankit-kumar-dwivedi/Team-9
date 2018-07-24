@@ -6,6 +6,7 @@ import Navi from './Welcome/Navigation';
 import TopCarousel from './Welcome/Carousel';
 import Clinics from './Welcome/Clinics';
 import WhatCanWeDo from './Welcome/Special';
+import Foot from './Welcome/Footer';
 
 const special = [
   {
@@ -58,7 +59,7 @@ class Welcome extends Component {
         <Clinics />
         <h2>Meet Our Specialists</h2>
         <Team special={special}/>
-        
+        <Foot/>
       </div>;
   }
 }
