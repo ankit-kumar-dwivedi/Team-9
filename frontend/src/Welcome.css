@@ -7,7 +7,10 @@ label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-
+.nomargin {
+    margin-left: 0;
+    margin-right: 0;
+}
 input[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -146,4 +149,8 @@ h1:after, h2:after {
   border-width: 5px;
   border-radius: 50%;
   
+}
+.footer{
+    background-color: whitesmoke;
+    text-align: center;
 }

@@ -2,7 +2,7 @@ import  React  from 'react';
 import "../Welcome.css";
 
 function Header(){
-    return (<div className="row header">
+    return (<div className="row nomargin header">
         <div className="column">
             <img src="images\logo.png" className="logo" alt="Actor" />
         </div>
