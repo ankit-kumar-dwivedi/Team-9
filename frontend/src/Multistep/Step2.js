@@ -7,13 +7,28 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // step to take appointment time and date as input
 
+function Next() {
+  return (
+    <div>
+      <p> Click Next </p>
+      <button type="submit" className="btn btn-primary">
+        Next
+      </button>
+    </div>
+  );
+}
+
 class StepTwo extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            startDate: moment(),
-            Time: moment(),
-            
+            Date: moment(),
+            Time: '',
+            Speciality: '',
+            formErrors: { Time: '', Date: ''},
+            DateValid: false,
+            TimeValid: false,
+            FormValid: false
         };
 
         // single handleChange can do all magic
@@ -34,8 +49,39 @@ class StepTwo extends React.Component {
     
     
     handleSubmit(event) {
-        alert("submit ");
         event.preventDefault();
+        this.props.onSubmit();
+
+    }
+
+    validateField(fieldName, value) {
+        let fieldValidationErrors = this.state.formErrors;
+        let DateValid = this.state.DateValid;
+        let TimeValid = this.state.TimeValid;
+
+        // to be implemented as per the database
+
+        switch (fieldName) {
+            case "Date":
+                DateValid = true;
+                fieldValidationErrors.Date = DateValid ? "" : " is invalid";
+                break;
+            case "Time":
+                TimeValid = true;
+                fieldValidationErrors.Time = TimeValid ? "" : " is invalid";
+                break;
+            default:
+                break;
+        }
+        this.setState({
+            formErrors: fieldValidationErrors,
+            DateValid: DateValid,
+            TimeValid: TimeValid,
+        }, this.validateForm);
+    }
+
+    validateForm() {
+        this.setState({ FormValid: this.state.DateValid && this.state.TimeValid});
     }
 
 
@@ -50,25 +96,9 @@ class StepTwo extends React.Component {
                 <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
-                    showTimeSelect
-
-                
+                                   
                 />;
-                <DatePicker
-                    selected={this.state.Time}
-                    onChange={this.handleChange}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={30}
-                    timeCaption="Time"
-                    dateFormat="LT"
-                    withPortal />
-                <label>Lastname :</label>
-                <input name="Lastname" type="text"
-                    placeholder="Lastname"
-                    value={this.state.Lastname}
-                    onChange={this.handleChange} />
-
+                
                 <label>Speciality :</label>
                     
                 <select name="Gender"
@@ -84,11 +114,10 @@ class StepTwo extends React.Component {
                     </select>
                 
                 
-                <p>  Click Next </p>
-                <button type="submit" className="btn btn-primary"
-                    disabled={!(this.state.Lastname && this.state.FirstnameValid && this.state.AgeValid)}>
-                    Next
-              </button>
+                <button onClick={this.props.onBack} className="btn btn-primary" >
+                    Back
+            </button>
+                {this.state.FormValid && <Next />}
              
             </form>
         </div>;

@@ -1,12 +1,23 @@
 import React from "react";
-import { FormErrors } from './FormErrors';
+import {FormErrors} from './FormErrors';
 
 //  Step for General user details
 //  Age to be replaced with DOB
+function Next(){
+    return(
+    <div>
+        <p>  Click Next </p>
+        <button type="submit" className="btn btn-primary" >
+            Next
+        </button>
+    </div>
+    );
+}
 
 class StepOne extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        
         this.state = {
             Firstname: "",
             Lastname: "",
@@ -15,10 +26,12 @@ class StepOne extends React.Component {
             formErrors: { Firstname: '', Lastname: '' ,Age:''},
             FirstnameValid: false,
             LastnameValid: false,
-            AgeValid: false
+            AgeValid: false,
+            FormValid: false
         };
 
         // single handleChange can do all magic
+
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,6 +45,8 @@ class StepOne extends React.Component {
         this.setState({[name]: value},
         () => { this.validateField(name, value) });
     }
+
+
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
         let FirstnameValid = this.state.FirstnameValid;
@@ -58,12 +73,15 @@ class StepOne extends React.Component {
             formErrors: fieldValidationErrors,
             FirstnameValid: FirstnameValid,
             LastnameValid: LastnameValid,
-            AgeValid: AgeValid
+            AgeValid: AgeValid,
+            FormValid: (this.state.Lastname && this.state.FirstnameValid && this.state.AgeValid)
         });
     }
+
     handleSubmit(event) {
-        alert("submit ");
         event.preventDefault();
+        this.props.onSubmit();
+
     }
     
 
@@ -103,11 +121,8 @@ class StepOne extends React.Component {
               <input name="Age" type="number"
               value={this.state.Age}
                 onChange={this.handleChange} />
-              <p>  Click Next </p>
-              <button type="submit" className="btn btn-primary" 
-              disabled={!(this.state.Lastname && this.state.FirstnameValid && this.state.AgeValid)}>
-                Next
-              </button>
+                {this.state.FormValid && <Next />}
+              
             </form>
           </div>;
     }

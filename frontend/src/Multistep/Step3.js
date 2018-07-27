@@ -1,6 +1,18 @@
 import React from "react";
 import { FormErrors } from "./FormErrors";
 
+
+function Next() {
+    return (
+        <div>
+            <p>  Click Next </p>
+            <button type="submit" className="btn btn-primary" >
+                Next
+        </button>
+        </div>
+    );
+}
+
 class StepThree extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +24,7 @@ class StepThree extends React.Component {
             EmailValid: false,
             PasswordValid: false,
             ConfirmPasswordValid: false,
-            formValid: false
+            FormValid: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,8 +41,9 @@ class StepThree extends React.Component {
     }
 
     handleSubmit(event) {
-        alert("User Created Your username is mailed to you ");
         event.preventDefault();
+        this.props.onSubmit();
+        
     }
 
     validateField(fieldName, value) {
@@ -64,42 +77,30 @@ class StepThree extends React.Component {
     }
 
     validateForm() {
-        this.setState({ formValid: this.state.EmailValid && this.state.PasswordValid && this.state.ConfirmPasswordValid});
+        this.setState({ FormValid: this.state.EmailValid && this.state.PasswordValid && this.state.ConfirmPasswordValid});
     }
     render() {
         return <div className="container">
             <form className="form" onSubmit={this.handleSubmit}>
-                <div className="panel panel-default">
-                    <FormErrors formErrors={this.state.formErrors} />
-                </div>
-                <p>{this.state.handleError}</p>
+              <div className="panel panel-default">
+                <FormErrors formErrors={this.state.formErrors} />
+              </div>
+              <p>{this.state.handleError}</p>
 
-                <label>Email :</label>
-                <input name="Email" type="text"
-                    placeholder="Email" autoFocus
-                    value={this.state.Email}
-                    onChange={this.handleChange} />
+              <label>Email :</label>
+              <input name="Email" type="text" placeholder="Email" autoFocus value={this.state.Email} onChange={this.handleChange} />
 
-                <label>Password :</label>
-                <input name="Password" type="password"
-                    placeholder="Password"
-                    value={this.state.Password}
-                    onChange={this.handleChange} />
-                
-                <label>Confirm Password :</label>
-                <input name="ConfirmPassword" type="password"
-                    placeholder="ConfirmPassword"
-                    value={this.state.ConfirmPassword}
-                    onChange={this.handleChange} />
+              <label>Password :</label>
+              <input name="Password" type="password" placeholder="Password" value={this.state.Password} onChange={this.handleChange} />
 
-               
-                <p>  Click Next </p>
-                <button type="submit" className="btn btn-primary"
-                    disabled={!this.state.formValid}>
-                    Next
-              </button>
+              <label>Confirm Password :</label>
+              <input name="ConfirmPassword" type="password" placeholder="ConfirmPassword" value={this.state.ConfirmPassword} onChange={this.handleChange} />
+                <button onClick={this.props.onBack} className="btn btn-primary" >
+                    Back
+            </button>
+              {this.state.FormValid && <Next />}
             </form>
-        </div>;
+          </div>;
     }
 }
 
