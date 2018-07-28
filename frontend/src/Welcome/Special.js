@@ -42,7 +42,7 @@ function WhatCanWeDo() {
             </p>
             <div>
               <h4>
-                <a href="/patient-portal/" title="Patient Portal">
+                <a href="/portal/" title="Patient Portal">
                   PATIENT PORTAL
                 </a>
               </h4>

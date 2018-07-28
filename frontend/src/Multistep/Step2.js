@@ -26,7 +26,7 @@ class StepTwo extends React.Component {
             Time: '',
             Speciality: '',
             formErrors: { Time: '', Date: ''},
-            DateValid: false,
+            DateValid: true,
             TimeValid: false,
             FormValid: false
         };
@@ -39,7 +39,7 @@ class StepTwo extends React.Component {
 
     handleChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.value;
         const name = target.name;
 
         this.setState({
@@ -98,18 +98,26 @@ class StepTwo extends React.Component {
                     onChange={this.handleChange}
                                    
                 />;
-                
+                <label>Time :</label>
+                <select name="Time"
+                        value={this.state.value}
+                        onChange={this.handleChange}>
+
+                            <option value=""></option>
+                    <option value="11:00AM">11:00AM</option>
+                    <option value="11:30AM">11:30AM</option>
+                        </select>
                 <label>Speciality :</label>
                     
-                <select name="Gender"
+                <select name="Speciality"
                         value={this.state.value}
                         onChange={this.handleChange}>
                         
-                        <option value="Physician">Male</option>
-                        <option value="Dentist">Male</option>
-                        <option value="Dermatologist">Male</option>
-                        <option value="Ent">Female</option>
-                        <option value="Cancer Specialist">Others</option>
+                        <option value="Physician">Physician</option>
+                        <option value="Dentist">Dentist</option>
+                        <option value="Dermatologist">Dermatologist</option>
+                        <option value="Ent">EnT</option>
+                        <option value="Cancer Specialist">Cancer</option>
 
                     </select>
                 

@@ -49,7 +49,7 @@ class Multistep extends React.Component {
               </div>
 
               {this.state.step === 1 && <StepOne key="personal" onSubmit={this.goToNext} />}
-              {this.state.step === 2 && <StepThree key="date" onBack={this.goToPrev} onSubmit={this.goToNext} />}
+              {this.state.step === 2 && <StepTwo key="date" onBack={this.goToPrev} onSubmit={this.goToNext} />}
               {this.state.step === 3 && <StepThree key="confirmation" onBack={this.goToPrev} onSubmit={this.goToNext} />}
             </div>
           </div>;
